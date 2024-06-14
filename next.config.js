@@ -16,7 +16,7 @@ const nextConfig = {
     publicRuntimeConfig: {
         apiUrl: process.env.NODE_ENV === 'development'
             ? 'http://localhost:3000/api' // development api
-            : process.env.SERVERLESS_PROTO_API
+            : 'https://hello-hono-opm.pages.dev/api' // process.env.SERVERLESS_PROTO_API
     }
 }
 
