@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: "/nextjs-static-pages",
+
     output: "export",
     reactStrictMode: true,
     serverRuntimeConfig: {
