@@ -1,0 +1,9 @@
+@mixin b($width: 1px, $color: red) {
+  border: $width $color dashed;
+}
+$primaryMid : #C07F00;
+$primary-half: rgba(255, 217, 90, 0.5);
+
+@mixin bgRadGradient{
+  background: radial-gradient(ellipse at 50% 50%, $primary-half 0%, transparent 50%);
+}
