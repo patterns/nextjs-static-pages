@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { userService } from 'services';
 
 export default Home;
 
@@ -11,6 +10,7 @@ function Home() {
                 <h1>Page changes in progress...</h1>
                 <p>You&apos;re logged in with Next.js & JWT!!</p>
                 <p><Link href="/users">Manage Users</Link></p>
+                <p><Link href="/courses">Manage Courses</Link></p>
             </div>
         </div>
     );
