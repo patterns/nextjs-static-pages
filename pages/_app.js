@@ -1,9 +1,8 @@
-
+import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import RootLayout from '@/components/Layout';
-import '@/styles/globals.scss';
+import 'styles/globals.css';
 
 import { userService } from 'services';
 import { Nav, Alert } from 'components';
@@ -49,14 +48,19 @@ function App({ Component, pageProps }) {
         }
     }
 
-    const getLayout = Component.getLayout || ((page) => <RootLayout>{page}</RootLayout>);
-    return getLayout(
-        <div className={`app-container ${user ? 'bg-light' : ''}`}>
+    return (
+        <>
+            <Head>
+                <title>Next.js 13 - User Registration and Login Example</title>
+            </Head>
+
+            <div className={`app-container ${user ? 'bg-light' : ''}`}>
                 <Nav />
                 <Alert />
                 {authorized &&
                     <Component {...pageProps} />
                 }
-        </div>
+            </div>
+        </>
     );
 }
