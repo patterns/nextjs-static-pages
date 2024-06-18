@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { headers } from 'next/headers'
-import getConfig from 'next/config'
-import { Suspense } from 'react'
+////import getConfig from 'next/config'
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -10,8 +10,8 @@ import * as Yup from 'yup';
 import { Layout } from 'components/account';
 import { userService, alertService } from 'services';
 
-const { publicRuntimeConfig } = getConfig();
-const baseUrl = `${publicRuntimeConfig.apiUrl}/users`;
+////const { publicRuntimeConfig } = getConfig();
+////const baseUrl = `${publicRuntimeConfig.apiUrl}/users`;
 
 export default Login;
 
@@ -21,7 +21,8 @@ async function Relayauthorization() {
         // have CF Access JWT, see if backend can verify/confirm
         // fetch from server (before browser has page)
         const authorization = headersList.get('cf-access-jwt-assertion')
-        const res = await fetch(`${baseUrl}/authenticate`, {
+        ////const res = await fetch(`${baseUrl}/authenticate`, {
+        const res = await fetch('https://hello-hono-opm.pages.dev/api/users/authenticate', {
           method: 'POST',
           headers: { authorization, 'Content-Type': 'application/json' },
           body: '{"username":"preview@constantinople.edu"}',
@@ -61,9 +62,9 @@ function Login() {
             <div className="card">
                 <h4 className="card-header">Login</h4>
                 <div className="card-body">
-<Suspense fallback={<p>testing.....</p>}>
+
   <Relayauthorization />
-</Suspense>
+
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-3">
                             <label className="form-label">Username</label>
