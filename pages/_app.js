@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { headers } from 'next/headers';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
@@ -40,24 +39,6 @@ function App({ Component, pageProps }) {
         const path = url.split('?')[0];
 
         if (!userService.userValue && !publicPaths.includes(path)) {
-          const headersList = headers()
-          if (headersList.has('cf-access-jwt-assertion')) {
-              // appears we have CF Access JWT, see if backend can verify/confirm
-              userService.loginZT("preview@constantinople.edu")
-                .then(() => {
-                  if (userService.userValue) {
-                    setAuthorized(true)
-                  } else {
-                    setAuthorized(false)
-                    router.push({
-                      pathname: '/account/login',
-                      query: { returnUrl: router.asPath }
-                    })
-                  }
-                })
-                .catch(alertService.error);
-          }
-          // otherwise, redirect to login page
           setAuthorized(false);
           router.push({
                       pathname: '/account/login',

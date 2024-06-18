@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { headers } from 'next/headers'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -10,6 +11,22 @@ import { userService, alertService } from 'services';
 export default Login;
 
 function Login() {
+
+    const headersList = headers()
+    if (headersList.has('cf-access-jwt-assertion')) {
+        // have CF Access JWT, see if backend can verify/confirm
+        userService.loginZT("preview@constantinople.edu")
+            .then(() => {
+                  if (userService.userValue) {
+                    // redirect to index
+                  } else {
+                    // continue login page
+                  }
+            })
+            .catch(alertService.error);
+    }
+
+
     const router = useRouter();
 
     // form validation rules 
