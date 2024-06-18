@@ -18,7 +18,7 @@ function Home() {
       <code className="font-mono font-bold>${user.username}</code>
     );
 */
-    placeholder = authorization
+    if (authorization) placeholder = authorization
   }
 
 
