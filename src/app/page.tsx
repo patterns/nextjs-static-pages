@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { headers } from 'next/headers'
+export const runtime = 'edge'
 
 export default Home
-
 
 function Home() {
   const headersList = headers()
