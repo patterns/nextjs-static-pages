@@ -16,7 +16,7 @@ function Home() {
       headers: { authorization, "Content-Type":"application/json" },
       body: '{"username":"preview@constaninople.edu"}',
     })
-    const user = await res.json()
+    const user = res.json()
     if (user.username) placeholder = user.username
   }
 
