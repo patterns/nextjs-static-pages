@@ -17,7 +17,7 @@ async function Relayauth() {
       body: '{"username":"preview@constaninople.edu"}',
     })
     const user = await res.json()
-    if (user.username) {
+    if (user && user.username) {
       return <code className="font-mono font-bold">{user.username}</code>
     }
   }
