@@ -8,11 +8,12 @@ export default Home
 async function Relayauth() {
   const headersList = headers()
   if (headersList.has('cf-access-jwt-assertion')) {
-    const authorization = headersList.get('cf-access-jwt-assertion')
-
+    const token = headersList.get('cf-access-jwt-assertion')
+    let authorization = ""
+    if (token) authorization = token
     const res = await fetch('https://hello-hono-opm.pages.dev/api/users/authenticate', {
       method: 'POST',
-      headers: { authorization, "Content-Type":"application/json" },
+      headers: { "Cf-Access-Jwt-Assertion":authorization, "Content-Type":"application/json" },
       body: '{"username":"preview@constaninople.edu"}',
     })
     const user = await res.json()
