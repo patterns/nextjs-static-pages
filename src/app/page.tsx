@@ -16,9 +16,11 @@ async function Relayauth() {
       headers: { "Cf-Access-Jwt-Assertion":authorization, "Content-Type":"application/json" },
       body: '{"username":"preview@constaninople.edu"}',
     })
-    const user = await res.json()
-    if (user && user.username) {
-      return <code className="font-mono font-bold">{user.username}</code>
+    ////const user = await res.json()
+    const user = await res.text()
+    if (user) {
+      // json type is not defined
+      return <code className="font-mono font-bold">{user}</code>
     }
   }
   return <code className="font-mono font-bold">Missing CF Access JWT header</code>
