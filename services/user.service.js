@@ -29,11 +29,6 @@ async function login(username, password) {
     userSubject.next(user);
     localStorage.setItem('user', JSON.stringify(user));
 }
-async function loginZT(username) {
-    const user = await fetchWrapper.post(`${baseUrl}/authenticate`, { username });
-    userSubject.next(user);
-    localStorage.setItem('user', JSON.stringify(user));
-}
 
 function logout() {
     alertService.clear();

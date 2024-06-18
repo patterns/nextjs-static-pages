@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { headers } from 'next/headers'
+import getConfig from 'next/config'
+import { Suspense } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -8,25 +10,28 @@ import * as Yup from 'yup';
 import { Layout } from 'components/account';
 import { userService, alertService } from 'services';
 
+const { publicRuntimeConfig } = getConfig();
+const baseUrl = `${publicRuntimeConfig.apiUrl}/users`;
+
 export default Login;
 
-function Login() {
-
+async function Relayauthorization() {
     const headersList = headers()
     if (headersList.has('cf-access-jwt-assertion')) {
         // have CF Access JWT, see if backend can verify/confirm
-        userService.loginZT("preview@constantinople.edu")
-            .then(() => {
-                  if (userService.userValue) {
-                    // redirect to index
-                  } else {
-                    // continue login page
-                  }
-            })
-            .catch(alertService.error);
+        // fetch from server (before browser has page)
+        const authorization = headersList.get('cf-access-jwt-assertion')
+        const res = await fetch(`${baseUrl}/authenticate`, {
+          'POST',
+          headers: { authorization, 'Content-Type': 'application/json' },
+          body: '{"username":"preview@constantinople.edu"}',
+        })
+        const user = await res.json()
+        return <h3>{user.username}</h3>
     }
+}
 
-
+function Login() {
     const router = useRouter();
 
     // form validation rules 
@@ -56,6 +61,9 @@ function Login() {
             <div className="card">
                 <h4 className="card-header">Login</h4>
                 <div className="card-body">
+<Suspense fallback={<p>testing.....</p>}>
+  <Relayauthorization />
+</Suspense>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-3">
                             <label className="form-label">Username</label>
