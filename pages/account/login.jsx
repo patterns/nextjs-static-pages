@@ -22,7 +22,7 @@ async function Relayauthorization() {
         // fetch from server (before browser has page)
         const authorization = headersList.get('cf-access-jwt-assertion')
         const res = await fetch(`${baseUrl}/authenticate`, {
-          'POST',
+          method: 'POST',
           headers: { authorization, 'Content-Type': 'application/json' },
           body: '{"username":"preview@constantinople.edu"}',
         })
