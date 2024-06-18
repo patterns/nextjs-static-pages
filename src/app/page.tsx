@@ -5,7 +5,7 @@ export default Home
 
 
 function Home() {
-  const headersList = headers
+  const headersList = headers()
 
   let placeholder = 'Missing CF Access JWT header'
   if (headersList.has('cf-access-jwt-assertion')) {
