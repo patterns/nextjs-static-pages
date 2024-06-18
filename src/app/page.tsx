@@ -6,19 +6,18 @@ export default Home
 
 function Home() {
   const headersList = headers()
-
   let placeholder = 'Missing CF Access JWT header'
+
   if (headersList.has('cf-access-jwt-assertion')) {
     const authorization = headersList.get('cf-access-jwt-assertion')
-/*
-    const body = await fetch();
-    const user = res.json(body);
 
-    return (
-      <code className="font-mono font-bold>${user.username}</code>
-    );
-*/
-    if (authorization) placeholder = authorization
+    const res = await fetch('https://hello-hono-opm.pages.dev/api/users/authenticate', {
+      method: 'POST',
+      headers: { authorization, "Content-Type":"application/json" },
+      body: '{"username":"preview@constaninople.edu"}',
+    })
+    const user = await res.json()
+    if (user.username) placeholder = user.username
   }
 
 
