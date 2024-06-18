@@ -13,7 +13,6 @@ export const userService = {
     user: userSubject.asObservable(),
     get userValue() { return userSubject.value },
     login,
-    loginZT,
     logout,
     register,
     getAll,
