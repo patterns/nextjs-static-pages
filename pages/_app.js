@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { headers } from 'next/headers';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
@@ -32,22 +33,36 @@ function App({ Component, pageProps }) {
         }
     }, []);
 
-    // TODO will refactor
-    // - CF Access put its JWT in Cf-Access-Jwt-Assertion header
-    // - instead of redirect to login page, invoke the /authenticate with JWT
-    // - which returns role/identity on success
-
     function authCheck(url) {
         // redirect to login page if accessing a private page and not logged in 
         setUser(userService.userValue);
         const publicPaths = ['/account/login', '/account/register'];
         const path = url.split('?')[0];
+
         if (!userService.userValue && !publicPaths.includes(path)) {
-            setAuthorized(false);
-            router.push({
-                pathname: '/account/login',
-                query: { returnUrl: router.asPath }
-            });
+          const headersList = headers()
+          if (headersList.has('cf-access-jwt-assertion')) {
+              // appears we have CF Access JWT, see if backend can verify/confirm
+              userService.loginZT("preview@constantinople.edu")
+                .then(() => {
+                  if (userService.userValue) {
+                    setAuthorized(true)
+                  } else {
+                    setAuthorized(false)
+                    router.push({
+                      pathname: '/account/login',
+                      query: { returnUrl: router.asPath }
+                    })
+                  }
+                })
+                .catch(alertService.error);
+          }
+          // otherwise, redirect to login page
+          setAuthorized(false);
+          router.push({
+                      pathname: '/account/login',
+                      query: { returnUrl: router.asPath }
+          });
         } else {
             setAuthorized(true);
         }

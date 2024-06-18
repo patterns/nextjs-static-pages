@@ -13,6 +13,7 @@ export const userService = {
     user: userSubject.asObservable(),
     get userValue() { return userSubject.value },
     login,
+    loginZT,
     logout,
     register,
     getAll,
@@ -25,6 +26,11 @@ async function login(username, password) {
     const user = await fetchWrapper.post(`${baseUrl}/authenticate`, { username, password });
 
     // publish user to subscribers and store in local storage to stay logged in between page refreshes
+    userSubject.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
+}
+async function loginZT(username) {
+    const user = await fetchWrapper.post(`${baseUrl}/authenticate`, { username });
     userSubject.next(user);
     localStorage.setItem('user', JSON.stringify(user));
 }
