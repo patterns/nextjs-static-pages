@@ -1,4 +1,5 @@
 import getConfig from 'next/config';
+import { headers } from 'next/headers';
 
 import { userService } from 'services';
 
@@ -32,8 +33,16 @@ function authHeader(url) {
     const user = userService.userValue;
     const isLoggedIn = user?.token;
     const isApiUrl = url.startsWith(publicRuntimeConfig.apiUrl);
-    if (isLoggedIn && isApiUrl) {
-        return { Authorization: `Bearer ${user.token}` };
+    const headersList = headers()
+
+    if (isApiUrl) {
+        if (headersList.has('cf-access-jwt-assertion')) {
+          const zerotrustToken = headersList.get('cf-access-jwt-assertion')
+          return {zerotrustToken};
+        }
+        if (isLoggedIn) {
+          return {Authorization: `Bearer ${user.token}`};
+        }
     } else {
         return {};
     }

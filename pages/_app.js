@@ -32,6 +32,11 @@ function App({ Component, pageProps }) {
         }
     }, []);
 
+    // TODO will refactor
+    // - CF Access put its JWT in Cf-Access-Jwt-Assertion header
+    // - instead of redirect to login page, invoke the /authenticate with JWT
+    // - which returns role/identity on success
+
     function authCheck(url) {
         // redirect to login page if accessing a private page and not logged in 
         setUser(userService.userValue);
@@ -51,7 +56,7 @@ function App({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>Next.js 13 - User Registration and Login Example</title>
+                <title>Next.js 13 - Example</title>
             </Head>
 
             <div className={`app-container ${user ? 'bg-light' : ''}`}>

@@ -42,12 +42,12 @@ function Login() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-3">
                             <label className="form-label">Username</label>
-                            <input name="username" type="text" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
+                            <input name="username" type="text" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} placeholder="e.g. buzz@spaceacademy.edu" />
                             <div className="invalid-feedback">{errors.username?.message}</div>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Password</label>
-                            <input name="password" type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                            <input name="password" type="text" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} placeholder="e.g. prototype" />
                             <div className="invalid-feedback">{errors.password?.message}</div>
                         </div>
                         <button disabled={formState.isSubmitting} className="btn btn-primary">
