@@ -13,14 +13,13 @@ async function Relayauth() {
     if (token) authorization = token
     const res = await fetch('https://hello-hono-opm.pages.dev/api/users/authenticate', {
       method: 'POST',
-      headers: { "Cf-Access-Jwt-Assertion":authorization, "Content-Type":"application/json" },
-      body: '{"username":"preview@constaninople.edu"}',
+      headers: { "Cf-Access-Jwt-Assertion":authorization },
     })
-    ////const user = await res.json()
-    const user = await res.text()
-    if (user) {
-      // json type is not defined
-      return <code className="font-mono font-bold">{user}</code>
+    const user = await res.json()
+    ////const user = await res.text()
+    const debug = JSON.stringify(user)
+    if (debug) {
+      return <code className="font-mono font-bold">{debug}</code>
     }
   }
   return <code className="font-mono font-bold">Missing CF Access JWT header</code>
