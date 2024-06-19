@@ -11,7 +11,7 @@ async function Relayauth() {
     const token = headersList.get('cf-access-jwt-assertion')
     let authorization = ""
     if (token) authorization = token
-    const res = await fetch('https://hello-hono-opm.pages.dev/api/users/authenticate', {
+    const res = await fetch('https://hello-hono-opm.pages.dev/api/users/identify', {
       method: 'POST',
       headers: { "Cf-Access-Jwt-Assertion":authorization },
     })
