@@ -59,6 +59,7 @@ function Users() {
         const debug = await res.json()
 	const log = JSON.stringify(debug)
 	const users = undefined
+/*
         if (users?.length) {
             return (users.map(user =>
                 <tr key={user.guid}>
@@ -68,7 +69,7 @@ function Users() {
                     <td>{user.guid}</td>
                 </tr>
             ));
-        }
+        }*/
 
         if (!users) {
             return (
@@ -79,7 +80,7 @@ function Users() {
                 </tr>
             );
         }
-
+/*
         if (users?.length === 0) {
             return (
                 <tr>
@@ -88,6 +89,6 @@ function Users() {
                     </td>
                 </tr>
             );
-        }
+        }*/
     }
 }
