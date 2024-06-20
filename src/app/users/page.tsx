@@ -42,14 +42,17 @@ async function TableBody() {
             );
     }
 
+    // When this /users link is clicked, it is triggered inside the browser.
+    // Should we have kept a copy (from the referer) of the CF JWT in the browser's local storage?
     const token = headersList.get('cf-access-jwt-assertion')
     let authorization = ""
     if (token) authorization = token
     const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
             method: 'GET',
-            headers: { "Cf-Access-Jwt-Assertion":authorization },
+            credentials: 'include',
     })
 /*
+            headers: { "Cf-Access-Jwt-Assertion":authorization },
 	type JSONResponse = {
 	    data?: { users: Array<{ name: string, email: string, role: string, guid: string }> }
 	    errors?: Array<{message: string}>
