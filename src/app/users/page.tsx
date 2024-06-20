@@ -53,7 +53,7 @@ function Users() {
 	    errors?: Array<{message: string}>
 	}
         const { data, errors }: JSONResponse = await res.json()
-	const users = data.users
+	const users = data?.users
         if (users?.length) {
             return (users.map(user =>
                 <tr key={user.guid}>
