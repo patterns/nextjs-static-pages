@@ -48,11 +48,8 @@ function Users() {
             method: 'GET',
             headers: { "Cf-Access-Jwt-Assertion":authorization },
         })
-	type UserCollection = {
-	    Array<{ name: string, email: string, role: string, guid: string }>
-	}
 	type JSONResponse = {
-	    data?: { users: UserCollection }
+	    data?: { users: Array<{ name: string, email: string, role: string, guid: string }> }
 	    errors?: Array<{message: string}>
 	}
         const { data, errors }: JSONResponse = await res.json()
