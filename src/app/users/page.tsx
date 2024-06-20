@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import { Suspense } from 'react'
 import { headers } from 'next/headers'
 export const runtime = 'edge'
 
@@ -23,7 +24,9 @@ function Users() {
                     </tr>
                 </thead>
                 <tbody>
+                    <Suspense fallback={null}>
                     <TableBody />
+                    </Suspense>
                 </tbody>
             </table>
         </>
