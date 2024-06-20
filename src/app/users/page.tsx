@@ -1,14 +1,10 @@
 import Link from 'next/link'
-import { Suspense } from 'react'
 import { headers } from 'next/headers'
 export const runtime = 'edge'
 
 export default Users
 
-
 function Users() {
-    const headersList = headers()
-
 
     return (
         <>
@@ -20,21 +16,23 @@ function Users() {
                         <th style={{ width: '30%' }}>Name</th>
                         <th style={{ width: '30%' }}>Email</th>
                         <th style={{ width: '10%' }}>Role</th>
-                        <th style={{ width: '30%' }}>Ref#</th>
+                        <th style={{ width: '30%' }}>Ref</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <Suspense fallback={null}>
+
                     <TableBody />
-                    </Suspense>
+
                 </tbody>
             </table>
         </>
     );
+}
 
-    async function TableBody() {
+async function TableBody() {
+    const headersList = headers()
 
-        if (!headersList.has('cf-access-jwt-assertion')) {
+    if (!headersList.has('cf-access-jwt-assertion')) {
             return (
                 <tr>
                     <td colSpan={4}>
@@ -42,15 +40,15 @@ function Users() {
                     </td>
                 </tr>
             );
-        }
+    }
 
-        const token = headersList.get('cf-access-jwt-assertion')
-        let authorization = ""
-        if (token) authorization = token
-        const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
+    const token = headersList.get('cf-access-jwt-assertion')
+    let authorization = ""
+    if (token) authorization = token
+    const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
             method: 'GET',
             headers: { "Cf-Access-Jwt-Assertion":authorization },
-        })
+    })
 /*
 	type JSONResponse = {
 	    data?: { users: Array<{ name: string, email: string, role: string, guid: string }> }
@@ -61,7 +59,15 @@ function Users() {
 */
         const debug = await res.json()
 	const log = JSON.stringify(debug)
-	const users = undefined
+
+        return (
+                <tr>
+                    <td colSpan={4}>
+			{log}
+                    </td>
+                </tr>
+        );
+
 /*
         if (users?.length) {
             return (users.map(user =>
@@ -72,18 +78,18 @@ function Users() {
                     <td>{user.guid}</td>
                 </tr>
             ));
-        }*/
+        }
 
         if (!users) {
             return (
                 <tr>
                     <td colSpan={4}>
-			{log}
+
                     </td>
                 </tr>
             );
         }
-/*
+
         if (users?.length === 0) {
             return (
                 <tr>
@@ -93,5 +99,5 @@ function Users() {
                 </tr>
             );
         }*/
-    }
+
 }
