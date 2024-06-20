@@ -48,12 +48,17 @@ function Users() {
             method: 'GET',
             headers: { "Cf-Access-Jwt-Assertion":authorization },
         })
+/*
 	type JSONResponse = {
 	    data?: { users: Array<{ name: string, email: string, role: string, guid: string }> }
 	    errors?: Array<{message: string}>
 	}
         const { data, errors }: JSONResponse = await res.json()
 	const users = data?.users
+*/
+        const debug = await res.json()
+	const log = JSON.stringify(debug)
+	const users = undefined
         if (users?.length) {
             return (users.map(user =>
                 <tr key={user.guid}>
@@ -69,7 +74,7 @@ function Users() {
             return (
                 <tr>
                     <td colSpan={4}>
-
+			{log}
                     </td>
                 </tr>
             );
