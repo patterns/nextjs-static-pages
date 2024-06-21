@@ -49,9 +49,9 @@ async function TableBody() {
     if (token) authorization = token
     const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
             method: 'GET',
-            headers: { "Cf-Access-Jwt-Assertion":authorization },
     })
 /*
+            headers: { "Cf-Access-Jwt-Assertion":authorization },
 
 	type JSONResponse = {
 	    data?: { users: Array<{ name: string, email: string, role: string, guid: string }> }
