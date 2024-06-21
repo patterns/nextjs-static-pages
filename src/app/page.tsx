@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Suspense } from 'react'
-import { Identify } from '@/app/ui/identify-check''
+import { Identify } from '@/app/ui/identify-check'
 export const runtime = 'edge'
 
 /*
