@@ -1,10 +1,10 @@
 
 
-export async function fetchIdentify(authorization) {
+export async function fetchIdentify(authorization: string) {
 	try {
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/identify', {
 			method: 'POST',
-			headers: { "Cf-Access-Jwt-Assertion":authorization },
+			headers: { "Cf-Access-Jwt-Assertion": authorization },
 		})
 
 		const data = await res.json()
