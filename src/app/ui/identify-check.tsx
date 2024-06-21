@@ -1,5 +1,5 @@
 import { headers } from 'next/headers'
-////import { fetchIdentify } from '@/app/lib/data'
+import { fetchIdentify } from '@/app/lib/data'
 
 export default async function Identify() {
 	const headersList = headers()
@@ -7,13 +7,14 @@ export default async function Identify() {
 		const token = headersList.get('cf-access-jwt-assertion')
 		let authorization = ""
 		if (token) authorization = token
-
+/*
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/identify', {
 			method: 'POST',
 			headers: { "Cf-Access-Jwt-Assertion":authorization },
 		})
+		const user = await res.json()*/
 
-		const user = await res.json()
+		const user = await fetchIdentify(authorization)
 		const debug = JSON.stringify(user)
 		if (debug) {
 			return <code className="font-mono font-bold">{debug}</code>
