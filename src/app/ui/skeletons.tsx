@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 
 
-export function TableSkeleton() {
+export default function TableSkeleton() {
   return (
     <>
         <Image
