@@ -80,7 +80,7 @@ export default function Home() {
           href="#"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors pointer-events-none"
           aria-disabled="true"
-          tabIndex="-1"
+          tabIndex=-1
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Users{" "}
