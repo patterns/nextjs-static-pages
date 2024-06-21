@@ -1,4 +1,4 @@
-
+export const runtime = 'edge'
 
 export default Users
 
@@ -15,5 +15,5 @@ async function TableBody() {
     const res = await fetch('https://hello-hono-opm.pages.dev/api/users/')
     const debug = await res.json()
     const log = JSON.stringify(debug)
-    return <div>{ log }</div>
+    return <code>{ log }</code>
 }
