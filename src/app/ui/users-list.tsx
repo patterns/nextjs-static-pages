@@ -4,7 +4,14 @@ import { fetchUsers } from '@/app/lib/data'
 export default async function Users() {
 
   const list = await fetchUsers()
-	//const debug = JSON.stringify(user)
+  const debug = JSON.stringify(list)
+
+  return (
+    <div><code>
+    {debug}
+    </code></div>
+  )
+/*
   if (list && list.length >= 1) {
     return (
       <table>
@@ -32,7 +39,7 @@ export default async function Users() {
     )
   }
 
-
   return <table><tr><td>Name</td><td>Email</td><td>Role</td></tr></table>
+*/
 }
 
