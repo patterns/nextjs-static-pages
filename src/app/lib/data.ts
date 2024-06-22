@@ -33,9 +33,9 @@ export async function fetchIdentify(authorization: string) {
 export async function fetchUsers() {
 	// are cookies automatically sent
 	try {
-		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/')	/////, {
-		////	credentials: true,
-		////})
+		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
+			credentials: 'include',
+		})
 
 		const data = await res.json()
 		return data
