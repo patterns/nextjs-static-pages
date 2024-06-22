@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { cookies } from 'next/headers';
+import { cookieToken } from '@/app/lib/actions';
 
 export default function ServerAction({ action }: { action: () => void }) {
   useEffect(() => {
@@ -11,13 +11,10 @@ export default function ServerAction({ action }: { action: () => void }) {
   return <></>;
 }
 
-export function CookieToken(token) {
+export const CookieToken = ({ token }: { token: string }) => {
   useEffect(() => {
-    if (token) {
-        cookies().set('authorization', token);
-    }
+    cookieToken(token);
   }, []);
-
 
   return <></>;
 }
