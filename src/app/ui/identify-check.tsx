@@ -1,4 +1,4 @@
-import { headers } from 'next/headers'
+import { headers, cookies } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
 
 export default async function Identify() {
@@ -8,8 +8,12 @@ export default async function Identify() {
 		let authorization = ""
 		if (token) authorization = token
 
-		const user = await fetchIdentify(authorization)
-		const debug = JSON.stringify(user)
+		const mem = await fetchIdentify(authorization)
+
+		const cookieStore = cookies
+		const authorization = cookieStore.get('authorization')
+
+		const debug = JSON.stringify({ member: mem, authorization: authroization })
 		if (debug) {
 			return <code className="font-mono font-bold">{debug}</code>
 		}
