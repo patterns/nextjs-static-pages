@@ -30,11 +30,16 @@ export async function fetchIdentify(authorization: string) {
 	}
 }
 
-export async function fetchUsers() {
-	// are cookies automatically sent
+export async function fetchUsers(token) {
+	if (!token) {
+		return { error: 'Users requires cookie.' }
+	}
 	try {
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
 			credentials: 'include',
+			headers: {
+				Cookie: `authorization=${token};`
+			},
 		})
 
 		const data = await res.json()
