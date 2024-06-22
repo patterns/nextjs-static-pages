@@ -1,6 +1,6 @@
 import { headers, cookies } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
-import { CookieToken } from '@/app/ui/server-actions'
+import { CookieToken } from '@/app/ui/server-action'
 
 export default async function Identify() {
 	const headersList = headers()
