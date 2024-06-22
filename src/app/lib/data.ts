@@ -11,7 +11,7 @@ export async function fetchIdentify(authorization: string) {
 		return data
 	} catch (error) {
 		console.log('API identify:', error)
-		throw new Error('Fetch identify fail.')
+		return { error: 'Fetch identify fail.' }
 	}
 }
 
@@ -23,7 +23,7 @@ export async function fetchUsers() {
 		return data
 	} catch (error) {
 		console.log('API users:', error)
-		throw new Error('Fetch users fail.')
+		return { error: 'Fetch users fail.' }
 	}
 }
 
