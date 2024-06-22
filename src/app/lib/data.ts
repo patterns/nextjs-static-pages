@@ -1,7 +1,7 @@
 
 
 export async function fetchIdentify(authorization: string) {
-	try {
+	////try {
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/identify', {
 			method: 'POST',
 			headers: { "Cf-Access-Jwt-Assertion": authorization },
@@ -10,10 +10,10 @@ export async function fetchIdentify(authorization: string) {
 		////const data = await res.json()
 		////return data
 		return res
-	} catch (error) {
-		console.log('API identify:', error)
-		return { error: 'Fetch identify fail.' }
-	}
+	////} catch (error) {
+/////		console.log('API identify:', error)
+////		return { error: 'Fetch identify fail.' }
+	////}
 }
 
 export async function fetchUsers() {
