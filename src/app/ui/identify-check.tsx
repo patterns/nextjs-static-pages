@@ -1,6 +1,6 @@
-import { headers, cookies } from 'next/headers'
+import { headers } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
-import { CookieToken } from '@/app/ui/server-action'
+import { CookieToken } from '@/app/ui/client-component'
 
 export default async function Identify() {
 	const headersList = headers()
@@ -13,16 +13,13 @@ export default async function Identify() {
 		const session = await fetchIdentify(authorization)
 
 		// Store the token we received from API
-		//if (session.token) {
-		//	cookies().set('authorization', session.token)
-		//}
 
 		const debug = JSON.stringify(session.data)
 		if (debug) {
 			return (
 			<>
 				<code className="font-mono font-bold">{debug}</code>
-				<CookieToken token="{ session.token }" />
+				<CookieToken token={ session.token } />
 			</>
 			)
 		}
@@ -30,6 +27,5 @@ export default async function Identify() {
 
 	return <code className="font-mono font-bold">Missing CF Access JWT header</code>
 }
-/*
-*/
+
 
