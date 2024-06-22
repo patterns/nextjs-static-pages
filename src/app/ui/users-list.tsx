@@ -4,10 +4,11 @@ import { fetchUsers } from '@/app/lib/data'
 export default async function Users() {
 
     const token = await cookies().get('authorization')?.value ?? ''
-    const list = await fetchUsers(token)
-    const debug = JSON.stringify(list)
+    //const list = await fetchUsers(token)
 
-    return <pre><code>{ debug }</code></pre>
+    //const debug = JSON.stringify(list)
+
+    return <pre><code>{ token }</code></pre>
 
 
 

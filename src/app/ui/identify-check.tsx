@@ -18,8 +18,10 @@ export default async function Identify() {
 		if (debug) {
 			return (
 			<>
-				<code className="font-mono font-bold">{debug}</code>
-				<CookieToken token={ session.token } />
+			<code className="font-mono font-bold">
+			{debug}
+			<CookieToken token={ session.token } />
+			</code>
 			</>
 			)
 		}
