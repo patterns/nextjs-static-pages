@@ -7,8 +7,9 @@ export async function fetchIdentify(authorization: string) {
 			headers: { "Cf-Access-Jwt-Assertion": authorization },
 		})
 
-		const data = await res.json()
-		return data
+		////const data = await res.json()
+		////return data
+		return res
 	} catch (error) {
 		console.log('API identify:', error)
 		return { error: 'Fetch identify fail.' }
