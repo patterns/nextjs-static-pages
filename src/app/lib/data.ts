@@ -38,7 +38,7 @@ export async function fetchUsers(token: string) {
 	}
 	try {
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
-			headers: { "Cf-Access-Jwt-Assertion": authorization },
+			headers: { "Cf-Access-Jwt-Assertion": token },
 		})
 /*
 			credentials: 'include',
