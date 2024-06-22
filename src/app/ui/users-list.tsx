@@ -1,4 +1,4 @@
-////import { headers } from 'next/headers'
+
 import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
@@ -6,11 +6,7 @@ export default async function Users() {
   const list = await fetchUsers()
   const debug = JSON.stringify(list)
 
-  return (
-    <div><code>
-    {debug}
-    </code></div>
-  )
+  return <pre><code>{ debug }</code></pre>
 /*
   if (list && list.length >= 1) {
     return (
