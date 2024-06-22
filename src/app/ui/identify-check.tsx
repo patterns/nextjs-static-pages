@@ -11,9 +11,9 @@ export default async function Identify() {
 		const mem = await fetchIdentify(authorization)
 
 		const cookieStore = cookies
-		const authorization = cookieStore.get('authorization')
+		const authcookie = cookieStore.get('authorization')
 
-		const debug = JSON.stringify({ member: mem, authorization: authroization })
+		const debug = JSON.stringify({ member: mem, authorization: authcookie })
 		if (debug) {
 			return <code className="font-mono font-bold">{debug}</code>
 		}
