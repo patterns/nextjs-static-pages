@@ -8,12 +8,14 @@ export default async function Identify() {
 		let authorization = ""
 		if (token) authorization = token
 
-		const res = await fetchIdentify(authorization)
-		const member = await res.json()
+		const session = await fetchIdentify(authorization)
+
+		/*const member = await res.json()
 		const cookieStore = res.headers
 		const cookieHeader = cookieStore.get('set-cookie')
+		const debug = JSON.stringify({ member: member, cookieHeader: cookieHeader })*/
 
-		const debug = JSON.stringify({ member: member, cookieHeader: cookieHeader })
+		const debug = JSON.stringify({ member: session.data, token: session.token })
 		if (debug) {
 			return <code className="font-mono font-bold">{debug}</code>
 		}
