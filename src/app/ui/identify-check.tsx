@@ -12,7 +12,9 @@ export default async function Identify() {
 		const session = await fetchIdentify(authorization)
 
 		// Store the token we received from API
-		cookies().set('authorization', session.token)
+		if (session.token) {
+			cookies().set('authorization', session.token)
+		}
 
 		const debug = JSON.stringify(session.data)
 		if (debug) {
