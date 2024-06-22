@@ -1,4 +1,4 @@
-
+// Note, don't throw exceptions and prefer return error type.
 
 export async function fetchIdentify(authorization: string) {
 	try {
@@ -21,7 +21,7 @@ export async function fetchIdentify(authorization: string) {
 			}
 		}
 
-		return ( data: data, token: token }
+		return { data: data, token: token }
 	} catch (error) {
 		console.log('API identify:', error)
 		return { error: 'Fetch identify fail.' }
