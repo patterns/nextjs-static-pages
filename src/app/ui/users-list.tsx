@@ -1,13 +1,13 @@
-import { cookies } from 'next/headers'
+////import { cookies } from 'next/headers'
 import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
 
-    //const list = await fetchUsers()
-    //const debug = JSON.stringify(list)
+    const list = await fetchUsers()
+    const debug = JSON.stringify(list)
 
     // DEBUG is the auth cookie still present?
-    const debug = await cookies().get('authorization')?.value ?? ''
+    ////const debug = await cookies().get('authorization')?.value ?? ''
 
     return <pre><code>{ debug }</code></pre>
 
