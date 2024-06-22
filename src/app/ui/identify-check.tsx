@@ -14,7 +14,7 @@ export default async function Identify() {
 
 		// Store the token we received from API
 
-		const debug = JSON.stringify(session.data)
+		const debug = JSON.stringify({ member: session.data, token: session.token })
 		if (debug) {
 			return (
 			<>
