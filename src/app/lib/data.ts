@@ -38,7 +38,7 @@ export async function fetchUsers(token: string) {
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
 			credentials: 'include',
 			headers: {
-				Cookie: `authorization=${token};`
+				Authorization: `Bearer ${token}`
 			},
 		})
 
