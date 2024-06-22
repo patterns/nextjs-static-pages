@@ -12,12 +12,14 @@ export async function fetchIdentify(authorization: string) {
 		// contract: API adds authorization cookie
 		let token
 		const cookieHeader = res.headers.get('set-cookie')
-		const cookiesArray = cookieHeader.split(/[;,]/)
-		for (const cookie of cookiesArray) {
-			const [name, value] = cookie.trim().split('=')
-			if (name === 'authorization') {
-				token = value
-				break
+		if (cookieHeader) {
+			const cookiesArray = cookieHeader.split(/[;,]/)
+			for (const cookie of cookiesArray) {
+				const [name, value] = cookie.trim().split('=')
+				if (name === 'authorization') {
+					token = value
+					break
+				}
 			}
 		}
 
