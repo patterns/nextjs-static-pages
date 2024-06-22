@@ -1,6 +1,6 @@
 import { headers, cookies } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
-import { ServerAction } from '@/app/ui/server-action'
+import { CookieToken } from '@/app/ui/server-action'
 
 export default async function Identify() {
 	const headersList = headers()
@@ -22,7 +22,8 @@ export default async function Identify() {
 			return (
 			<>
 				<code className="font-mono font-bold">{debug}</code>
-				<ServerAction action={() => if (session.token) await cookies().set('authorization', session.token)} />
+				<CookieToken token="{session.token}" />
+
 			</>
 			)
 		}
