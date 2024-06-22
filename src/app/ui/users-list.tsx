@@ -2,11 +2,14 @@
 import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
+  try {
+    const list = await fetchUsers()
+    const debug = JSON.stringify(list)
 
-  const list = await fetchUsers()
-  const debug = JSON.stringify(list)
-
-  return <pre><code>{ debug }</code></pre>
+    return <pre><code>{ debug }</code></pre>
+  } catch (error) {
+    return <pre><code>FAIL: { error }</code></pre>
+  }
 /*
   if (list && list.length >= 1) {
     return (
