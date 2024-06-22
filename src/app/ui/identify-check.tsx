@@ -1,5 +1,6 @@
 import { headers, cookies } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
+import { ServerAction } from '@/app/ui/server-action'
 
 export default async function Identify() {
 	const headersList = headers()
@@ -12,13 +13,16 @@ export default async function Identify() {
 		const session = await fetchIdentify(authorization)
 
 		// Store the token we received from API
-		if (session.token) {
-			cookies().set('authorization', session.token)
-		}
+		//if (session.token) {
+		//	cookies().set('authorization', session.token)
+		//}
 
 		const debug = JSON.stringify(session.data)
 		if (debug) {
-			return <code className="font-mono font-bold">{debug}</code>
+			return (
+				<code className="font-mono font-bold">{debug}</code>
+				<ServerAction action={ cookies().set('authorization', session.token) } />
+			)
 		}
 	}
 
