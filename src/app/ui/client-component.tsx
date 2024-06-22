@@ -11,7 +11,7 @@ export default function ServerAction({ action }: { action: () => void }) {
   return <></>;
 }
 
-export const CookieToken = ({ token }: { token: string }) => {
+export const CookieToken = ({ token }: { token: string|undefined }) => {
   useEffect(() => {
     cookieToken(token);
   }, []);
