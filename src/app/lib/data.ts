@@ -9,6 +9,7 @@ export async function fetchIdentify(authorization: string) {
 
 		const data = await res.json()
 
+		/* This was the API generated token within cookies
 		// contract: API adds authorization cookie
 		let token
 		const cookieHeader = res.headers.get('set-cookie')
@@ -21,9 +22,10 @@ export async function fetchIdentify(authorization: string) {
 					break
 				}
 			}
-		}
+		}*/
 
-		return { data: data, token: token }
+		// recycling the CF Access JWT for requests to API
+		return { data: data, token: authorization }
 	} catch (error) {
 		console.log('API identify:', error)
 		return { error: 'Fetch identify fail.' }
@@ -36,11 +38,14 @@ export async function fetchUsers(token: string) {
 	}
 	try {
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
+			headers: { "Cf-Access-Jwt-Assertion": authorization },
+		})
+/*
 			credentials: 'include',
 			headers: {
 				Authorization: `Bearer ${token}`
 			},
-		})
+		})*/
 
 		const data = await res.json()
 		return data
