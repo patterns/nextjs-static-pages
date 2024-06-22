@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import Users from '@/app/ui/users-list'
 import TableSkeleton from '@/app/ui/skeletons'
-////export const runtime = 'edge'
+export const runtime = 'edge'
 
 export default function Home() {
   'use client'
