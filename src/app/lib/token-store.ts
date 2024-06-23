@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware"
 export const useTokenStore = create(persist(
   (set, get) => ({
     tokens: "",
-    addToken: (token) => set({ answers: token }),
+    addToken: (token: string) => set({ answers: token }),
   }),
   {
     name: "token-storage", // unique name
