@@ -2,7 +2,7 @@ import { headers } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
 import { SessionToken } from '@/app/ui/client-component'
 //import useStore from '@/app/lib/useStore'
-//import { useTokenStore } from '@/app/lib/token-store'
+//import { useToken } from '@/app/lib/token-'
 
 
 export default async function Identify() {
@@ -16,8 +16,8 @@ export default async function Identify() {
 		const session = await fetchIdentify(authorization)
 
 		// Store the token
-		//const addToken = useStore(useTokenStore, (state) => state.addToken)
-		//addToken(authorization)
+		//const add = useStore(useToken, (state) => state.add)
+		//add(authorization)
 
 		const debug = JSON.stringify({ member: session.data, token: session.token })
 		if (debug) {

@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { cookieToken } from '@/app/lib/actions';
 import useStore from '@/app/lib/useStore'
-import { useTokenStore } from '@/app/lib/token-store'
+import { useTokenRing } from '@/app/lib/token-ring'
 
 export default function ServerAction({ action }: { action: () => void }) {
   useEffect(() => {
@@ -23,11 +23,8 @@ export const CookieToken = ({ token }: { token: string|undefined }) => {
 
 export const SessionToken = ({ token }: { token: string|undefined }) => {
 
-  const store = useStore(useTokenStore, (state) => state)
-  useEffect(() => {
-    store?.addToken(token)
-  }, []);
-
+  const { remember } = useStore(useTokenRing, (state) => state)
+  remember(token)
 
   return <></>;
 }
