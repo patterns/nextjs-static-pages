@@ -21,7 +21,12 @@ export default async function Identify() {
 
 		const debug = JSON.stringify({ member: session.data, token: session.token })
 		if (debug) {
-			return <code className="font-mono font-bold">{debug}</code><SessionToken token={authorization} />
+			return (
+<>
+<code className="font-mono font-bold">{debug}</code>
+<SessionToken token={authorization} />
+</>
+			)
 		}
 	}
 
