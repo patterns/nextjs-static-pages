@@ -1,6 +1,9 @@
 import { headers } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
-import { CookieToken } from '@/app/ui/client-component'
+////import { CookieToken } from '@/app/ui/client-component'
+import useStore from '@/app/lib/useStore'
+import { useTokenStore } from '@/app/lib/token-store'
+
 
 export default async function Identify() {
 	const headersList = headers()
@@ -12,18 +15,13 @@ export default async function Identify() {
 		// Forward the CF Access JWT to API to prove our identity
 		const session = await fetchIdentify(authorization)
 
-		// Store the token we received from API
+		// Store the token
+		const addToken = useStore(useTokenStore, (state) => state.addToken)
+		addToken(authorization)
 
 		const debug = JSON.stringify({ member: session.data, token: session.token })
 		if (debug) {
-			return (
-			<>
-			<code className="font-mono font-bold">
-			{debug}
-			<CookieToken token={ session.token } />
-			</code>
-			</>
-			)
+			return <code className="font-mono font-bold">{debug}</code>
 		}
 	}
 

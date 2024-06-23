@@ -9,7 +9,7 @@ export async function fetchIdentify(authorization: string) {
 
 		const data = await res.json()
 
-		/* This was the API generated token within cookies
+		/* This was the API generated token within cookies (TODO if we revisit internal jwt then switch from cookie to header)
 		// contract: API adds authorization cookie
 		let token
 		const cookieHeader = res.headers.get('set-cookie')
