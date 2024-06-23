@@ -22,7 +22,7 @@ export const CookieToken = ({ token }: { token: string|undefined }) => {
 }
 
 export const SessionToken = ({ token }: { token: string|undefined }) => {
-  const store = useStore(useTokenStore, (state) => state)
+  const store: useTokenStore = useStore(useTokenStore, (state) => state)
   store?.addToken(token)
 
   return <></>;
