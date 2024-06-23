@@ -22,8 +22,8 @@ export const CookieToken = ({ token }: { token: string|undefined }) => {
 }
 
 export const SessionToken = ({ token }: { token: string|undefined }) => {
-  const TokenStoreType = typeof useTokenStore
-  const store: TokenStoreType = useStore(useTokenStore, (state) => state)
+
+  const store: typeof(useTokenStore) = useStore(useTokenStore, (state) => state)
   store?.addToken(token)
 
   return <></>;
