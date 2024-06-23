@@ -1,14 +1,14 @@
 import { cookies } from 'next/headers'
 import { fetchUsers } from '@/app/lib/data'
-import useStore from '@app/lib/useStore'
-import { useTokenStore } from '@/app/lib/token-store'
-
-const bears = useStore(useBearStore, (state) => state.bears)
+//import useStore from '@app/lib/useStore'
+//import { useTokenStore } from '@/app/lib/token-store'
 
 export default async function Users() {
 
-    ////const token = await cookies().get('authorization')?.value ?? ''
-    const token = useStore(useTokenStore, (state) => state.tokens)
+    const token = await cookies().get('authorization')?.value ?? ''
+
+    ////const token = useStore(useTokenStore, (state) => state.tokens)
+
     //const list = await fetchUsers(token)
 
     //const debug = JSON.stringify(list)
