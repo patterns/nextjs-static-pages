@@ -3,7 +3,7 @@ import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
 
-    const token = await cookies().get('copiedjwt')
+    const {value} = await cookies().get('copiedjwt')
 /*
     const headersList = headers()
     if (headersList.has('cf-access-jwt-assertion')) {
@@ -14,11 +14,9 @@ export default async function Users() {
         return <pre><code>{ debug }</code></pre>
     }*/
 
-    ////const token = useStore(useTokenStore, (state) => state.tokens)
+    const list = await fetchUsers(value)
 
-    //const list = await fetchUsers(token)
-
-    const debug = JSON.stringify(token)
+    const debug = JSON.stringify(list)
 
     return <code>{debug}</code>
 
