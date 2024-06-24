@@ -33,7 +33,7 @@ export async function fetchIdentify(authorization: string) {
 }
 
 export async function fetchUsers(token: string) {
-	if (!token) {
+	if (token == "") {
 		return { error: 'Users requires cookie.' }
 	}
 	try {
