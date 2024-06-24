@@ -6,7 +6,7 @@ import TableSkeleton from '@/app/ui/skeletons'
 export const runtime = 'edge'
 
 export default function Home() {
-  'use client'
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
