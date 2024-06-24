@@ -2,7 +2,6 @@ import { headers } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
 
 
-
 export default async function Identify() {
 	const headersList = headers()
 
@@ -19,12 +18,7 @@ export default async function Identify() {
 
 		const debug = JSON.stringify({ member: session.data, token: session.token })
 		if (debug) {
-			return (
-<>
-<code className="font-mono font-bold">{debug}</code>
-
-</>
-			)
+			return <code className="font-mono font-bold">{debug}</code>
 		}
 	}
 

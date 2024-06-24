@@ -1,7 +1,5 @@
 import { headers } from 'next/headers'
 import { fetchUsers } from '@/app/lib/data'
-//import useStore from '@app/lib/useStore'
-//import { useTokenStore } from '@/app/lib/token-store'
 
 export default async function Users() {
 
@@ -21,7 +19,7 @@ export default async function Users() {
 
     ////const debug = JSON.stringify(token)
 
-    return <pre><code>Header did not stay intact.</code></pre>
+    return <code>Sorry, the login session ended.</code>
 
 
 
