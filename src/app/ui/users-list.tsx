@@ -1,4 +1,4 @@
-import { headers } from 'next/headers'
+import { cookies } from 'next/headers'
 import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
