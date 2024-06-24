@@ -16,9 +16,10 @@ export default async function Users() {
 
     if (cookie) {
         const token = cookie.value
-        const list = await fetchUsers(token)
-        const debug = JSON.stringify(list)
-        return <code>{debug}</code>
+        ////const list = await fetchUsers(token)
+        ////const debug = JSON.stringify(list)
+
+        return <code>{token}</code>
     }
     return <code>Missing cookie</code>
 
