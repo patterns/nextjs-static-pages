@@ -3,18 +3,15 @@ import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
     const cookie = await cookies().get('copiedjwt')
-
-    if (cookie) {
-        const token = cookie.value
-        const list = await fetchUsers(token)
-        const debug = JSON.stringify(list)
-        return <code>{debug}</code>
+    if (!cookie) {
+        return <code>Missing cookie</code>
     }
-    return <code>Missing cookie</code>
 
+    const token = cookie.value
+    const list = await fetchUsers(token)
+    ////const debug = JSON.stringify(list)
+    ////return <code>{debug}</code>
 
-
-/*
   if (list && list.length >= 1) {
     return (
       <table>
@@ -43,6 +40,5 @@ export default async function Users() {
   }
 
   return <table><tr><td>Name</td><td>Email</td><td>Role</td></tr></table>
-*/
 }
 
