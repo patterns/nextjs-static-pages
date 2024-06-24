@@ -5,7 +5,7 @@ import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
 
-    const token = await cookies().get('authorization')?.value ?? ''
+    const token = await cookies().get('authorization')
 
     ////const token = useStore(useTokenStore, (state) => state.tokens)
 
