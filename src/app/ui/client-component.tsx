@@ -24,8 +24,10 @@ export const CookieToken = ({ token }: { token: string|undefined }) => {
 export const SessionToken = ({ token }: { token: string|undefined }) => {
 
   const store = useStore(useTokenRing, (state) => state)
-  const { remember } = store?
-  remember(token)
+  if (store) {
+      const { remember } = store
+      remember(token)
+  }
 
   return <></>;
 }
