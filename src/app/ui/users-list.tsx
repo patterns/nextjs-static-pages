@@ -3,7 +3,8 @@ import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
 
-    ////const token = await cookies().get('authorization')
+    const token = await cookies().get('copiedjwt')
+/*
     const headersList = headers()
     if (headersList.has('cf-access-jwt-assertion')) {
         const token = headersList.get('cf-access-jwt-assertion')
@@ -11,15 +12,15 @@ export default async function Users() {
         if (token) authorization = token
         const debug = JSON.stringify(token)
         return <pre><code>{ debug }</code></pre>
-    }
+    }*/
 
     ////const token = useStore(useTokenStore, (state) => state.tokens)
 
     //const list = await fetchUsers(token)
 
-    ////const debug = JSON.stringify(token)
+    const debug = JSON.stringify(token)
 
-    return <code>Sorry, the login session ended.</code>
+    return <code>{debug}</code>
 
 
 
