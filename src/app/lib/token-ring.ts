@@ -6,8 +6,8 @@ interface TokenRing {
     remember : (token : string)=> void
 }
 
-export const useTokenRing = create(
-    persist<TokenRing>(
+export const useTokenRing = create<TokenRing>()(
+    persist(
         (set) => ({
             value : "",
             remember : (token: string) => set({ value: token }),
