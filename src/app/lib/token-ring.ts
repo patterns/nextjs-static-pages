@@ -8,11 +8,9 @@ interface TokenRing {
 
 export const useTokenRing = create(
     persist<TokenRing>(
-        (set, get) => ({
+        (set) => ({
             value : "",
-            remember : (token: string)=> {
-                set(()=>({ value: token }))
-            }
+            remember : (token: string) => set({ value: token }),
         }),
         {
             name: "token-ring", // unique name
