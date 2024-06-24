@@ -51,7 +51,7 @@ export async function fetchUsers(token: string) {
 		return data
 	} catch (error) {
 		console.log('API users:', error)
-		return { error: 'Fetch users fail.' }
+		return { error: error }
 	}
 }
 
