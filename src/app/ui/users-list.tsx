@@ -11,9 +11,9 @@ export default async function Users() {
 
     //const list = await fetchUsers(token)
 
-    //const debug = JSON.stringify(list)
+    const debug = JSON.stringify(token)
 
-    return <pre><code>{ token }</code></pre>
+    return <pre><code>{ debug }</code></pre>
 
 
 
