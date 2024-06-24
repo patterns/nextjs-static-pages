@@ -1,8 +1,8 @@
 import { headers } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
-import { SessionToken } from '@/app/ui/client-component'
-//import useStore from '@/app/lib/useStore'
-//import { useToken } from '@/app/lib/token-'
+import { atom, useSetAtom } from 'jotai'
+
+const tokenAtom = atom('')
 
 
 export default async function Identify() {
@@ -16,15 +16,15 @@ export default async function Identify() {
 		const session = await fetchIdentify(authorization)
 
 		// Store the token
-		//const add = useStore(useToken, (state) => state.add)
-		//add(authorization)
+		const setToken = useSetAtom(tokenAtom)
+		setToken(authorization)
 
 		const debug = JSON.stringify({ member: session.data, token: session.token })
 		if (debug) {
 			return (
 <>
 <code className="font-mono font-bold">{debug}</code>
-<SessionToken token={authorization} />
+
 </>
 			)
 		}
