@@ -7,6 +7,7 @@ const tokenAtom = atom('')
 
 export default async function Identify() {
 	const headersList = headers()
+	const setToken = useSetAtom(tokenAtom)
 	if (headersList.has('cf-access-jwt-assertion')) {
 		const token = headersList.get('cf-access-jwt-assertion')
 		let authorization = ""
@@ -16,7 +17,6 @@ export default async function Identify() {
 		const session = await fetchIdentify(authorization)
 
 		// Store the token
-		const setToken = useSetAtom(tokenAtom)
 		setToken(authorization)
 
 		const debug = JSON.stringify({ member: session.data, token: session.token })
