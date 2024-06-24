@@ -37,7 +37,7 @@ export async function fetchUsers(token: string) {
 		return { error: 'Users requires cookie.' }
 	}
 	try {
-		const res = await fetch('https://hello-hono-opm.pages.dev/api/users/', {
+		const res = await fetch('https://hello-hono-opm.pages.dev/api/users', {
 			headers: { "Cf-Access-Jwt-Assertion": token },
 		})
 /*
