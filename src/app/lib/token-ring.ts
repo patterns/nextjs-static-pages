@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware"
 
 interface TokenRing {
     value : string
-    remember : (string)=> void
+    remember : (token : string)=> void
 }
 
 export const useTokenRing = create(
