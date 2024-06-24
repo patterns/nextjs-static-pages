@@ -9,7 +9,7 @@ export const runtime = 'edge'
 
 export default function Home() {
   async function loadUsers(formData : FormData) {
-    'user server'
+    'use server'
 
     // access header
     const token = headers().get('cf-access-jwt-assertion')
