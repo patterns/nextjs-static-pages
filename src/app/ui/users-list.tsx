@@ -1,19 +1,27 @@
-import { cookies } from 'next/headers'
+import { headers } from 'next/headers'
 import { fetchUsers } from '@/app/lib/data'
 //import useStore from '@app/lib/useStore'
 //import { useTokenStore } from '@/app/lib/token-store'
 
 export default async function Users() {
 
-    const token = await cookies().get('authorization')
+    ////const token = await cookies().get('authorization')
+    const headersList = headers()
+    if (headersList.has('cf-access-jwt-assertion')) {
+        const token = headersList.get('cf-access-jwt-assertion')
+        let authorization = ""
+        if (token) authorization = token
+        const debug = JSON.stringify(token)
+        return <pre><code>{ debug }</code></pre>
+    }
 
     ////const token = useStore(useTokenStore, (state) => state.tokens)
 
     //const list = await fetchUsers(token)
 
-    const debug = JSON.stringify(token)
+    ////const debug = JSON.stringify(token)
 
-    return <pre><code>{ debug }</code></pre>
+    return <pre><code>Header did not stay intact.</code></pre>
 
 
 
