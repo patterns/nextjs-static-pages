@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
+    // we created the cookie to copy token from the initial identify call
     const cookie = await cookies().get('copiedjwt')
     if (!cookie) {
         return <code>Missing cookie</code>
@@ -24,13 +25,13 @@ export default async function Users() {
         </tr>
       </thead>
       <tbody>
-      {list.map((item) => {
+      {list.map(({name, email, role, guid}) => {
         return (
         <tr>
-          <td>{item.name}</td>
-          <td>{item.email}</td>
-          <td>{item.role}</td>
-          <td>{item.guid}</td>
+          <td>{name}</td>
+          <td>{email}</td>
+          <td>{role}</td>
+          <td>{guid}</td>
         </tr>
         )
       })}

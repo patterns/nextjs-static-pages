@@ -34,19 +34,14 @@ export async function fetchIdentify(authorization: string) {
 
 export async function fetchUsers(token: string) {
 	if (token == "") {
-		return { error: 'Users requires cookie.' }
+		return { error: 'Users requires token.' }
 	}
 	try {
 		const res = await fetch('https://hello-hono-opm.pages.dev/api/users', {
 			headers: { "Cf-Access-Jwt-Assertion": token },
 		})
-/*
-			credentials: 'include',
-			headers: {
-				Authorization: `Bearer ${token}`
-			},
-		})*/
 
+		// TODO here we are returning json, the invoker needs a mappable
 		const data = await res.json()
 		return data
 	} catch (error) {
