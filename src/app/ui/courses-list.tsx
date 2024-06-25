@@ -1,23 +1,24 @@
 import { cookies } from 'next/headers'
-import { fetchUsers } from '@/app/lib/data'
+import { fetchCourses } from '@/app/lib/data'
 
-export default async function Users() {
+export default async function Courses() {
     // the cookie is a copy of the token from the initial identify call
     const cookie = await cookies().get('copiedjwt')
     if (!cookie) {
         return <code>Missing cookie</code>
     }
 
-    const list = await fetchUsers(cookie.value)
+    const list = await fetchCourses(cookie.value)
 
     if (list) {
       return (
       <table>
       <thead>
         <tr>
-          <th style={{ width: '20%' }}>Name</th>
-          <th style={{ width: '30%' }}>Email</th>
-          <th style={{ width: '5%' }}>Role</th>
+          <th style={{ width: '10%' }}>Title</th>
+          <th style={{ width: '10%' }}>Descr</th>
+          <th style={{ width: '5%' }}>Category</th>
+          <th style={{ width: '30%' }}>URL</th>
           <th style={{ width: '45%' }}>Ref</th>
         </tr>
       </thead>
@@ -25,9 +26,10 @@ export default async function Users() {
       {Object.values(list).map((value, index) => {
         return (
         <tr key={index}>
-          <td>{value.name}</td>
-          <td>{value.email}</td>
-          <td>{value.role}</td>
+          <td>{value.title}</td>
+          <td>{value.description}</td>
+          <td>{value.category}</td>
+          <td>{value.url}</td>
           <td>{value.guid}</td>
         </tr>
         )
@@ -37,6 +39,6 @@ export default async function Users() {
       )
     }
 
-    return <table><tr><td>Name</td><td>Email</td><td>Role</td></tr></table>
+    return <table><tr><td>Title</td><td>Descr</td><td>Category</td></tr></table>
 }
 

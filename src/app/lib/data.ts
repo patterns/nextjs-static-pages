@@ -34,4 +34,22 @@ export async function fetchUsers(token: string) {
 	}
 }
 
+// server side GET to API
+export async function fetchCourses(token: string) {
+	if (token == "") {
+		return { error: 'Courses requires token.' }
+	}
+	try {
+		const res = await fetch('https://hello-hono-opm.pages.dev/api/courses', {
+			headers: { "Cf-Access-Jwt-Assertion": token },
+		})
+
+		const data = await res.json()
+		return data
+	} catch (error) {
+		console.log('API courses:', error)
+		return { error: error }
+	}
+}
+
 
