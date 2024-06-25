@@ -25,9 +25,9 @@ export default async function Users() {
         </tr>
       </thead>
       <tbody>
-      {list.map(({name, email, role, guid}) => {
+      {list.map(({name, email, role, guid}, index) => {
         return (
-        <tr>
+        <tr key={index}>
           <td>{name}</td>
           <td>{email}</td>
           <td>{role}</td>
