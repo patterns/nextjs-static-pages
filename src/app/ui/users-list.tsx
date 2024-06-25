@@ -12,6 +12,7 @@ export default async function Users() {
     const list = await fetchUsers(token)
     ////const debug = JSON.stringify(list)
     ////return <code>{debug}</code>
+    type OnlyKeys = keyof typeof list
 
   if (list) {
     return (
@@ -28,10 +29,10 @@ export default async function Users() {
       {Object.keys(list).map((key, index) => {
         return (
         <tr key={index}>
-          <td>{list[key].name}</td>
-          <td>{list[key].email}</td>
-          <td>{list[key].role}</td>
-          <td>{list[key].guid}</td>
+          <td>{list[key as OnlyKeys].name}</td>
+          <td>{list[key as OnlyKeys].email}</td>
+          <td>{list[key as OnlyKeys].role}</td>
+          <td>{list[key as OnlyKeys].guid}</td>
         </tr>
         )
       })}
