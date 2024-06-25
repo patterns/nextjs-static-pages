@@ -7,7 +7,7 @@ import TableSkeleton from '@/app/ui/skeletons'
 export const runtime = 'edge'
 
 export default function Home() {
-  async function loadUsers(formData : FormData) {
+  async function loadExamples(formData : FormData) {
     'use server'
 
     // access header
@@ -15,8 +15,14 @@ export default function Home() {
     if (token) {
       // copy header to cookie (probably not necessary, duplicated work)
       cookies().set('copiedjwt', token)
-      // load destination page
-      redirect('/users')
+
+      const action = formData.get('examples-action')
+      if (action == "users") {
+          redirect('/users')
+      }
+      if (action == "courses") {
+          redirect('/courses')
+      }
     }
   }
 
@@ -72,7 +78,7 @@ export default function Home() {
           </p>
         </a>
 
-        <button type="submit"
+        <button type="submit" name="examples-action" value="courses"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
@@ -86,7 +92,7 @@ export default function Home() {
           </p>
         </button>
 
-        <button type="submit"
+        <button type="submit" name="examples-action" value="users"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
