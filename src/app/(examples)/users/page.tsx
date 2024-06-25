@@ -1,6 +1,6 @@
-
-import Link from 'next/link'
+import { headers, cookies } from 'next/headers'
 import { Suspense } from 'react'
+import Link from 'next/link'
 import Users from '@/app/ui/users-list'
 import TableSkeleton from '@/app/ui/skeletons'
 export const runtime = 'edge'
