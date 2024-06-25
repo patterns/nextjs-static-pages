@@ -10,12 +10,9 @@ export default async function Users() {
 
     const token = cookie.value
     const list = await fetchUsers(token)
-    ////const debug = JSON.stringify(list)
-    ////return <code>{debug}</code>
 
-
-  if (list) {
-    return (
+    if (list) {
+      return (
       <table>
       <thead>
         <tr>
@@ -38,9 +35,9 @@ export default async function Users() {
       })}
       </tbody>
       </table>
-    )
-  }
+      )
+    }
 
-  return <table><tr><td>Name</td><td>Email</td><td>Role</td></tr></table>
+    return <table><tr><td>Name</td><td>Email</td><td>Role</td></tr></table>
 }
 
