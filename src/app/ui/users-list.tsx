@@ -13,7 +13,7 @@ export default async function Users() {
     ////const debug = JSON.stringify(list)
     ////return <code>{debug}</code>
 
-  if (list && list.length >= 1) {
+  if (list) {
     return (
       <table>
       <thead>
