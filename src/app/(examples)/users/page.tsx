@@ -1,4 +1,5 @@
 import { headers, cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 import Link from 'next/link'
 import Users from '@/app/ui/users-list'
