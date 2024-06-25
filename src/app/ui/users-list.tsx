@@ -2,24 +2,23 @@ import { cookies } from 'next/headers'
 import { fetchUsers } from '@/app/lib/data'
 
 export default async function Users() {
-    // we created the cookie to copy token from the initial identify call
+    // the cookie is a copy of the token from the initial identify call
     const cookie = await cookies().get('copiedjwt')
     if (!cookie) {
         return <code>Missing cookie</code>
     }
 
-    const token = cookie.value
-    const list = await fetchUsers(token)
+    const list = await fetchUsers(cookie.value)
 
     if (list) {
       return (
       <table>
       <thead>
         <tr>
-          <th style={{ width: '30%' }}>Name</th>
+          <th style={{ width: '25%' }}>Name</th>
           <th style={{ width: '30%' }}>Email</th>
-          <th style={{ width: '10%' }}>Role</th>
-          <th style={{ width: '30%' }}>Ref</th>
+          <th style={{ width: '5%' }}>Role</th>
+          <th style={{ width: '40%' }}>Ref</th>
         </tr>
       </thead>
       <tbody>
