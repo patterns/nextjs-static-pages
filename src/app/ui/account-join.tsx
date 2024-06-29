@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 ////import { fetchUsers } from '@/app/lib/data'
 
-export default async function Users() {
+export default async function Account() {
     // the cookie is a copy of the token from the initial identify call
     const cookie = await cookies().get('copiedjwt')
     if (!cookie) {
