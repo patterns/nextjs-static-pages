@@ -52,4 +52,22 @@ export async function fetchCourses(token: string) {
 	}
 }
 
+// server side POST to API
+export async function fetchAccount(token: string) {
+	if (token == "") {
+		return { error: 'Account requires token.' }
+	}
+	try {
+		const res = await fetch('https://hello-hono-opm.pages.dev/api/users', {
+			method: 'POST',
+			headers: { "Cf-Access-Jwt-Assertion": token },
+		})
+
+		const data = await res.json()
+		return data
+	} catch (error) {
+		console.log('API account:', error)
+		return { error: 'Fetch account fail.' }
+	}
+}
 

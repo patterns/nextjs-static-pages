@@ -1,7 +1,7 @@
 import { headers } from 'next/headers'
 import { fetchIdentify } from '@/app/lib/data'
 
-
+// identify is to help debug by printing the fields after the API validates the token
 export default async function Identify() {
     const headersList = headers()
 
