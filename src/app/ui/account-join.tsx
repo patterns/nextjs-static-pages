@@ -13,7 +13,7 @@ export default async function Account() {
     //     So the API will extract the ref# and email from the token 
     //     and insert into the members table with the role as PENDING.
 
-    const confirm = await fetchAccount(cookie.value)
+    const { name, email, role, refid } = await fetchAccount(cookie.value)
 
 
     if (confirm) {
@@ -31,10 +31,10 @@ export default async function Account() {
 
 
         <tr >
-          <td>{confirm.name}</td>
-          <td>{confirm.email}</td>
-          <td>{confirm.role}</td>
-          <td>{confirm.refid}</td>
+          <td>{name}</td>
+          <td>{email}</td>
+          <td>{role}</td>
+          <td>{refid}</td>
         </tr>
 
 
