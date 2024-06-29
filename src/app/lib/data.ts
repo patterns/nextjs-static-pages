@@ -64,8 +64,7 @@ export async function fetchAccount(token: string) {
 		})
 
 		const data = await res.json()
-                // it is one row, so we reshape it into a "list"
-		return { "0": data }
+		return data
 	} catch (error) {
 		console.log('API account:', error)
 		return { error: 'Fetch account fail.' }

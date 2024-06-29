@@ -14,7 +14,11 @@ export default async function Account() {
     //     and insert into the members table with the role as PENDING.
 
     const list = await fetchAccount(cookie.value)
-
+    if (list) {
+        const debug = JSON.stringify(list)
+        return <code>{ debug }</code>
+    }
+/***********************
     if (list) {
       return (
       <table>
@@ -43,7 +47,7 @@ export default async function Account() {
       </table>
       )
     }
-
+***********************/
     return <code>Account fail</code>
 }
 
