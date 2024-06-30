@@ -1,4 +1,4 @@
-
+import Link from 'next/link'
 import { headers, cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
@@ -28,7 +28,13 @@ export default function Home() {
       }
     }
   }
-
+/****** first try Link to see whether headers are preserved (and decouple us from cookies)
+  async function handleJoin(event) {
+    event.currentTarget.disabled = true
+    //TODO do we still have cookie
+    redirect('/join')
+  }
+******/
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -92,7 +98,7 @@ export default function Home() {
           </p>
         </button>
 
-        <button type="submit" name="examples-action" value="join"
+        <Link href="/join"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
@@ -104,7 +110,7 @@ export default function Home() {
           <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
             Join new user example.
           </p>
-        </button>
+        </Link>
       </div></form>
     </main>
   );

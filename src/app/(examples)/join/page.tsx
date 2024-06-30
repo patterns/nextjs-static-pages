@@ -25,10 +25,10 @@ export default function Page() {
       if (action == "courses") {
           redirect('/courses')
       }
-      if (action == "join") {
-          // TODO  POST to API
-          redirect('/')
-      }
+
+
+
+
 
     }
   }

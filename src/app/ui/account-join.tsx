@@ -8,7 +8,7 @@ export default async function Account() {
         return <code>Missing cookie</code>
     }
 
-    //TODO send the cookie/token to the API as the create/POST request
+    // send the cookie/token to the API as the create/POST request
     //     (for minimal case, this is the visitor signing up as a new account)
     //     So the API will extract the ref# and email from the token 
     //     and insert into the members table with the role as PENDING.
