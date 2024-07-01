@@ -20,7 +20,11 @@ export async function loadExamples(prevState, formData) {
       if (action == "join") {
           redirect('/join')
       }
+
+      return "Unknown button value"
     }
+
+    return "Missing header"
 }
 
 
