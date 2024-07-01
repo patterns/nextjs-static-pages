@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import { useActionState } from 'react'
 import Identify from '@/app/ui/identify-check'
 import TableSkeleton from '@/app/ui/skeletons'
-import SubmitButton from '@/app/ui/submit-button'
+import { SubmitButton } from '@/app/ui/submit-button'
 import { loadExamples } from '@/app/lib/actions'
 export const runtime = 'edge'
 
