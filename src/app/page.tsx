@@ -12,7 +12,7 @@ export const runtime = 'edge'
 ////const initialState = { message: 'initialized' }
 
 export default function Home() {
-  const [state, formAction] = useActionState(loadExamples)
+  const [state, formAction] = useActionState(loadExamples, null)
 
 /*****************
   async function loadExamples(prevState, formData) {
