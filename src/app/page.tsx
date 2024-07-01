@@ -1,6 +1,4 @@
 
-////import { headers, cookies } from 'next/headers'
-////import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 import { useActionState } from 'react'
 import Identify from '@/app/ui/identify-check'
@@ -11,31 +9,8 @@ export const runtime = 'edge'
 
 
 export default function Home() {
-  ////const [stateDescr, formAction] = useActionState(loadExamples, "initialized")
 
 /*****************
-  async function loadExamples(prevState, formData) {
-    'use server'
-
-    // access header
-    const token = headers().get('cf-access-jwt-assertion')
-    if (token) {
-      // copy header to cookie (probably not necessary, duplicated work)
-      cookies().set('copiedjwt', token)
-      // access field from the submit button
-      const action = formData.get('examples-action')
-      if (action == "users") {
-          redirect('/users')
-      }
-      if (action == "courses") {
-          redirect('/courses')
-      }
-      if (action == "join") {
-          redirect('/join')
-      }
-    }
-  }
-
   async function handleJoin(event) {
     event.currentTarget.disabled = true
     // cookie may be cached, but set anyway
@@ -91,21 +66,9 @@ export default function Home() {
           </p>
         </button>
 
-        <button type="submit" name="examples-action" value="users"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Users{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Display example users from Cloudflare D1 table.
-          </p>
-        </button>
 
-        <SubmitButton />
+        <SubmitButton value="users" label="Users" descr="Display example users from Cloudflare D1 table." />
+        <SubmitButton value="join" label="Join" descr="Join new user example." />
 
       </div></form>
     </main>
