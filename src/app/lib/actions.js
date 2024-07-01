@@ -3,7 +3,7 @@
 import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-async function loadExamples(prevState, formData) {
+export async function loadExamples(prevState, formData) {
     // access header
     const token = headers().get('cf-access-jwt-assertion')
     if (token) {
