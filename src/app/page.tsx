@@ -9,10 +9,10 @@ import { SubmitButton } from '@/app/ui/submit-button'
 import { loadExamples } from '@/app/lib/actions'
 export const runtime = 'edge'
 
-const initialState = { message: 'initialized' }
+////const initialState = { message: 'initialized' }
 
 export default function Home() {
-  const [state, formAction] = useActionState(loadExamples, initialState)
+  const [state, formAction] = useActionState(loadExamples)
 
 /*****************
   async function loadExamples(prevState, formData) {
