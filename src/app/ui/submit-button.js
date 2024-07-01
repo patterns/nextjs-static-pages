@@ -1,13 +1,13 @@
 'use client'
 
-import { useFormStatus } from 'react-dom'
+////import { useFormStatus } from 'react-dom'
  
 export function SubmitButton() {
   // state flag used to set the disabled attribute
-  const { buffering } = useFormStatus()
+  ////const { buffering } = useFormStatus()
  
   return (
-        <button type="submit" name="examples-action" value="join" disabled={buffering}
+        <button type="submit" name="examples-action" value="join" 
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:bor
 der-neutral-700 hover:dark:bg-neutral-800/30"
         >
